@@ -10,10 +10,11 @@ class AppContainer extends React.Component{
 
     render() {
         return (
-                <div className="row">
+                <React.Fragment>
                     {this.props.left}
+                    
                     {this.props.children}
-                </div>
+                 </React.Fragment>
             
         );
     }

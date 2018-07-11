@@ -6,8 +6,8 @@ class AppSideBar extends React.Component{
         return(
             <div class="col-lg-2">
                 <div class="list-group">
-                    <Link to="/home"> Home</Link>
-                    <Link to="/contact"> Contact</Link>
+                    <Link className="list-group-item" to="/home"> Home</Link>
+                    <Link className="list-group-item" to="/contact"> Contact</Link>
                 </div>
             </div>
         )

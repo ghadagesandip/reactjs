@@ -7,10 +7,8 @@ class AppHome extends React.Component{
 
     render() {
         return (
-            <AppContainer left={
-                <AppSideBar/>
-            }>
-                <div className="col-lg-10">
+            <AppContainer>
+                <div className="col-lg-12">
                     Home
                 </div>
             </AppContainer>
