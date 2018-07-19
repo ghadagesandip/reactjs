@@ -5,30 +5,31 @@ class AppHeader extends React.Component{
 
     render(){
         return(
-            <nav class="navbar navbar-inverse ">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+            <nav className="navbar navbar-inverse header navbar-fixed-top ">
+                <div className="container-fluid">
+                    <div className="navbar-header">
+                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span className="sr-only">Toggle navigation</span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Project name</a>
+                        <a className="navbar-brand" href="#">Project name</a>
                     </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <form class="navbar-form navbar-right">
-                            <div class="form-group">
-                                <input type="text" placeholder="Email" class="form-control" />
+                    <div id="navbar" className="navbar-collapse collapse">
+                        <form className="navbar-form navbar-left ">
+                            <div className="form-group">
+                                <input type="text" placeholder="Search" className="form-control col-md-6" />
                             </div>
-                            <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" />
-                            </div>
-                            <button type="submit" class="btn btn-success">Sign in</button>
-
+                            <button type="submit" className="btn btn-success">Search</button>
+                            <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
                             &nbsp;
-                            <Link to="/forgot-password"> Forgot password?</Link>
                         </form>
+                        <ul className="nav navbar-nav navbar-right">
+                            <li><a href="#">Login & Signup</a></li>
+                            <li><Link to="/cart"> Cart</Link></li>
+                            
+                        </ul>
                     </div>
                 </div>
             </nav>

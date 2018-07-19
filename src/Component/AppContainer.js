@@ -12,8 +12,9 @@ class AppContainer extends React.Component{
         return (
                 <React.Fragment>
                     {this.props.left}
-                    
+                    <div className="col-sm-10">    
                     {this.props.children}
+                    </div>
                  </React.Fragment>
             
         );

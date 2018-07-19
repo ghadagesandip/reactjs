@@ -1,0 +1,13 @@
+body{
+    background-color: ghostwhite;
+}
+.header{
+    background-color: blueviolet;
+    margin-bottom: 2px;
+}
+.content{
+    margin-top: 63px;
+}
+.category{
+    border-bottom: 1px gray;
+}
