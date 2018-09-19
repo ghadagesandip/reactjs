@@ -17,9 +17,8 @@ class App extends Component {
     this.onUpdateUser = this.onUpdateUser.bind(this);
   }
 
-  onUpdateUser(){
-    console.log('cakked');
-    this.props.onUpdateUser('Sammy');
+  onUpdateUser(event){
+    this.props.onUpdateUser(event.target.value);
   }
 
   
@@ -27,6 +26,7 @@ class App extends Component {
     return (
       <React.Fragment>
             <AppHeader />
+          
             <div className="container-fluid content">
                 <Switch>
                   <Route exact path="/" component ={AppHome} />
@@ -37,8 +37,11 @@ class App extends Component {
                   <Route component={NotFound} />
                 </Switch>
             </div>
-            <div onClick={this.onUpdateUser}>Update User </div>
-            {this.props.user}
+              <div>
+              Change name <input  onChange={this.onUpdateUser}/>
+              {this.props.user}
+            </div>  
+           
       </React.Fragment>
 
        
@@ -48,6 +51,7 @@ class App extends Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   products: state.products,
   user: state.user

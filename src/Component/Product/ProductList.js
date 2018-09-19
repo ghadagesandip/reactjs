@@ -2,7 +2,6 @@ import React from 'react';
 import AppContainer from '../AppContainer';
 import AppSideBar from '../AppSideBar';
 import { Link } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
 
 
 class ProductList extends React.Component{
@@ -108,7 +107,3 @@ class ProductList extends React.Component{
 }
 
 export default ProductList;
-
-ProductList.PropTypes ={
-    
-}

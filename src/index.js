@@ -14,29 +14,7 @@ import './styles/style.css'
 
 import allReducers from './Reducers/index';
 
-
-
-const initialState = {};
-const middleware = [thunk];
-
-
-const store = createStore(
-    allReducers, {
-        products : [],
-        user : 'sandip'
-    },
-    window.devToolsExtension && window.devToolsExtension()
-);
-
-// console.log(store.getState());
-
-// const updateUserAction  = {
-//     type: 'updateUser',
-//     payload: {
-//         user : 'santosh'
-//     }
-// }
-// store.dispatch(updateUserAction);
+const store = createStore(allReducers);
 
 ReactDOM.render(
     <Provider store={store}>
