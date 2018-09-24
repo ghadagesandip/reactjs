@@ -2,7 +2,7 @@ import React from 'react';
 import {Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setCategoryProducts } from '../Actions/category-products';
+import { fetchCategoryProductList } from '../Actions/category-actions';
 
 import Product from '../Component/Home/Product';
 
@@ -11,59 +11,84 @@ class ProductCategory extends React.Component{
 
     constructor(props){
         super(props);
-        this.state={
-            productCategoryList : [ ]
+        this.state = {
+            productCategoryList : [],
+            isLoading: false,
+            hasError:false
         }
     }
 
-    componentWillMount(){
-        fetch('http://localhost:3001/api/category/products?limit=5')
-        .then(res=>res.json())
-        .then(data=>this.props.setCategoryProducts(data.data))
+    componentDidMount(){
+
+        this.props.fetchCategoryProductList();
     }
 
 
     render(){
-      var pr = {};
-      return(
-        <React.Fragment>
-            {
-                 this.props.productCategoryList.map((productCategory, index) =>
-                    <div className="row thumbnail" key={productCategory._id}>
+        if(this.props.isLoading){
+            return (
+                <React.Fragment>
+                {
+                    <div className="row thumbnail">
                         <div className="col-md-12">
-                            <div className='row category'>
-                                <div className="col-md-3 pull-left" > <h3>{productCategory.name}</h3></div>
-                                <div className="col-md-3 pull-right" >
-                                <Link to={`/${productCategory.slug}`} > <button className="btn btn-primary pull-right">View All</button></Link></div>
-                            </div>
                             <div className='row'>
-                                {productCategory.products.map((product,index) =>
-                                    <Product key={index+'-'+product._id} product={product} category={productCategory.slug}/>
-                                )}      
+                                <div className="col-md-12" > <h3> Loading products, please wait...</h3></div>
                             </div>
                         </div> 
                     </div>    
-                )
-            }
-            
-        </React.Fragment>
-      )
+                }
+                
+            </React.Fragment>
+            );
+        }
+
+       
+        if (this.props.hasErrored) {
+            return <p>Sorry! There was an error loading the items</p>;
+        }
+
+        return(
+            <React.Fragment>
+                {
+                    this.props.productCategoryList.map((productCategory, index) =>
+                        <div className="row thumbnail" key={productCategory._id}>
+                            <div className="col-md-12">
+                                <div className='row category'>
+                                    <div className="col-md-3 pull-left" > <h3>{productCategory.name}</h3></div>
+                                    <div className="col-md-3 pull-right" >
+                                    <Link to={`/${productCategory.slug}`} > <button className="btn btn-primary pull-right">View All</button></Link></div>
+                                </div>
+                                <div className='row'>
+                                    {productCategory.products.map((product,index) =>
+                                        <Product key={index+'-'+product._id} product={product} category={productCategory.slug}/>
+                                    )}      
+                                </div>
+                            </div> 
+                        </div>    
+                    )
+                }
+                
+            </React.Fragment>
+          )
+      
         
           
     }
 }
 
 function mapStateToProps(state){
-
+    //console.log('state', state)
     return {
-        productCategoryList: state.categoryProducts
+        productCategoryList: state.categoryProducts.categories,
+        isLoading: state.categoryProducts.isLoading,
+        hasError: state.categoryProducts.hasError
     }
 }
 
 function mapDispatchToProps(dispatch){
 
     return bindActionCreators({
-        setCategoryProducts
+        fetchCategoryProductList
     }, dispatch)
 }
 

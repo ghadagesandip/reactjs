@@ -16,10 +16,10 @@ class Product extends React.Component{
             <Link to={`${this.state.category}/${this.state.product.brand}`}>
                 <div className="col-ms-2 col-md-2">
                     <div className="text-center" >
-                        <img height="100px" max-width="70px" src={this.state.product} data-holder-rendered="true" /> 
+                        <img height="100px" max-width="70px" src={this.state.product.colors[0].images[0].name} data-holder-rendered="true" /> 
                         <div className="caption"> 
-                            <h4 className="">{this.state.product.name}</h4> 
-                            <p>{this.state.product.desc}</p>
+                            <h4 className="">{this.state.product.brand}</h4> 
+                            <p>{this.state.product.name}</p>
                             <p>Starting from {this.state.product.price}</p>
                         </div>
                     </div> 
