@@ -14,9 +14,9 @@ class Product extends React.Component{
     render(){
         return(
             <Link to={`${this.state.category}/${this.state.product.brand}`}>
-                <div className="col-ms-2 col-md-2">
+                <div className="col-ms-2 col-md-2 marleft15">
                     <div className="text-center" >
-                        <img height="100px" max-width="70px" src={this.state.product.colors[0].images[0].name} data-holder-rendered="true" /> 
+                        <img height="100px" max-width="70px" src={this.state.product.image } data-holder-rendered="true" /> 
                         <div className="caption"> 
                             <h4 className="">{this.state.product.brand}</h4> 
                             <p>{this.state.product.name}</p>
@@ -29,7 +29,10 @@ class Product extends React.Component{
     }
 }
 
-
+Product.PropTypes = {
+    product : PropTypes.object,
+    category : PropTypes.string
+}
 
 export default Product;
 
